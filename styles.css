@@ -11,6 +11,14 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* This will remove the scrollbar */
+}
+
+
 a {
     text-decoration: none;
     color: #171717;
