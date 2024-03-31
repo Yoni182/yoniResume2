@@ -1,22 +1,46 @@
-$('.skills-prog li').find('.skills-bar').each (i) ->
-  $(this).find('.bar').delay(i*150).animate {
-    width: $(this).parents().attr('data-percent') + '%'
-  }, 1000, 'linear', ->
-    $(this).css 'transition-duration': '.5s'
-  return
-$('.skills-soft li').find('svg').each (i) ->
-  circle = $(this).children('.cbar')
-  r = circle.attr('r')
-  c = Math.PI * (r * 2)
-  percent = $(this).parent().data 'percent'
-  cbar = ((100-percent)/100) * c
-  circle.css 'stroke-dashoffset': c, 'stroke-dasharray': c
-  circle.delay(i*150).animate {
-    strokeDashoffset: cbar
-  }, 1000, 'linear', ->
-    circle.css 'transition-duration': '.3s'
-  $(this).siblings('small').prop('Counter', 0).delay(i*150).animate {
-    Counter: percent
-  }, duration: 1000, step: (now) ->
-    $(this).text Math.ceil(now) + '%'
-  return
+// Menu links
+let getAbout = document.getElementById("getAbout");
+let getResume = document.getElementById("getResume");
+let getContact = document.getElementById("getContact");
+
+// Sections
+let about = document.getElementById("about");
+let resume = document.getElementById("resume");
+let contact = document.getElementById("contact");
+
+function removeClass() {
+    // Links
+    getAbout.classList.remove('selected');
+    getResume.classList.remove('selected');
+    getContact.classList.remove('selected');
+    // Sections
+    about.classList.remove('view');
+    resume.classList.remove('view');
+    contact.classList.remove('view');
+}
+
+getAbout.addEventListener('click', function (e) {
+    if (window.innerWidth > 1040) {
+        e.preventDefault();
+        removeClass();
+        about.classList.add('view');
+        getAbout.classList.add('selected');
+    }
+
+});
+getResume.addEventListener('click', function (e) {
+    if (window.innerWidth > 1040) {
+        e.preventDefault();
+        removeClass();
+        resume.classList.add('view');
+        getResume.classList.add('selected');
+    }
+})
+getContact.addEventListener('click', function (e) {
+    if (window.innerWidth > 1040) {
+        e.preventDefault();
+        removeClass();
+        contact.classList.add('view');
+        getContact.classList.add('selected');
+    }
+})
